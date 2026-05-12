@@ -9,7 +9,7 @@ interface PageHeroProps {
 
 export default function PageHero({ title, subtitle, image, accent = 'green' }: PageHeroProps) {
   return (
-    <section className="relative h-72 md:h-96 flex items-end overflow-hidden">
+    <section className="relative h-96 flex items-end overflow-hidden">
       <div className="absolute inset-0">
         <img src={image} alt={title} className="w-full h-full object-cover" />
         <div className="absolute inset-0 bg-gradient-to-t from-green-950/90 via-green-900/50 to-green-800/20" />
