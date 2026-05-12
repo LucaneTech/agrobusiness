@@ -56,14 +56,13 @@ export default function Home() {
               </span>
             </motion.div> */}
 
-            <div className='flex flex-row items-center justify-center'>
-              <img src="favicon.png" alt="icon agrobusiness" className='w-64 sm:w-72 md:w-80 h-auto object-contain' />
+           
               <motion.h1 variants={fadeUp} className="text-5xl md:text-6xl lg:text-7xl font-800 text-white leading-tight">
                 KFK{' '}
                 <span className="text-orange-400">AGRO</span>
                 <br />BUSINESS
               </motion.h1>
-            </div>
+       
 
             <motion.p variants={fadeUp} className="text-xl md:text-2xl text-green-200 font-500 italic">
               Ensemble, cultivons l'avenir
@@ -141,7 +140,7 @@ export default function Home() {
           className="relative group flex flex-col items-center text-center
             bg-white hover:bg-gray-50
             border border-gray-100 hover:border-orange-400/60
-            rounded-2xl p-6 overflow-hidden
+            rounded-md p-6 overflow-hidden
             shadow-md hover:shadow-xl hover:shadow-orange-500/10
             transition-all duration-300 cursor-default"
         >

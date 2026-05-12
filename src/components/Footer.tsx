@@ -9,7 +9,7 @@ export default function Footer() {
           {/* Brand */}
           <div className="lg:col-span-1">
             <Link to="/" className="flex items-center gap-3 group">
-              <img src="logo.png" alt="logo KFK agrobusiness" className='w-24 sm:w-28 md:w-48 h-auto object-contain' />
+              <img src="logo.png" alt="logo KFK agrobusiness" className='w-48 h-auto object-contain' />
 
             </Link>
             <p className="text-green-200 text-sm leading-relaxed mb-5">
