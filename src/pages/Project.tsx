@@ -67,7 +67,7 @@ export default function Project() {
             >
               <div className="relative h-60 overflow-hidden">
                 <img
-                  src="https://images.unsplash.com/photo-1601493700631-2b16ec4b4716?w=800&auto=format&fit=crop&q=80"
+                  src="https://images.unsplash.com/photo-1693672843111-7c74d07a9410?w=800&auto=format&fit=crop&q=80"
                   alt="Production de maïs"
                   className="w-full h-full object-cover transition-transformmai
               duration-700 group-hover:scale-105"

@@ -13,7 +13,7 @@ const gallery = [
   {
     src: 'https://images.unsplash.com/photo-1601493700631-2b16ec4b4716?w=800&auto=format&fit=crop&q=80',
     thumb: 'https://images.unsplash.com/photo-1601493700631-2b16ec4b4716?w=400&auto=format&fit=crop&q=70',
-    caption: 'Récolte de maïs frais',
+    caption: 'Récolte de mangues frais',
     category: 'agriculture',
   },
   {
@@ -26,6 +26,12 @@ const gallery = [
     src: 'https://images.unsplash.com/photo-1500937386664-56d1dfef3854?w=800&auto=format&fit=crop&q=80',
     thumb: 'https://images.unsplash.com/photo-1500937386664-56d1dfef3854?w=400&auto=format&fit=crop&q=70',
     caption: "Travaux d'agriculture",
+    category: 'agriculture',
+  },
+  {
+    src: 'https://images.unsplash.com/photo-1693672843111-7c74d07a9410?w=800&auto=format&fit=crop&q=80',
+    thumb: 'https://images.unsplash.com/photo-1693672843111-7c74d07a9410?w=800&auto=format&fit=crop&q=80',
+    caption: 'Récolte de maïs frais',
     category: 'agriculture',
   },
   {

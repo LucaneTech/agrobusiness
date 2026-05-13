@@ -69,15 +69,15 @@ export default function Footer() {
             <h3 className="font-700 text-white mb-5 text-base">Contact</h3>
             <ul className="space-y-3.5">
               <li>
-                <a href="mailto:kfkagrobusiness@gmail.com" className="flex items-start gap-3 text-green-200 hover:text-orange-400 text-sm transition-colors">
+                <a href="mailto:contact@kfkagrobusiness.com" className="flex items-start gap-3 text-green-200 hover:text-orange-400 text-sm transition-colors">
                   <FaEnvelope size={15} className="mt-0.5 flex-shrink-0 text-orange-400" />
-                  kfkagrobusiness@gmail.com
+                 contact@kfkagrobusiness.com
                 </a>
               </li>
               <li>
-                <a href="https://wa.me/243970000000" target="_blank" rel="noopener noreferrer" className="flex items-start gap-3 text-green-200 hover:text-orange-400 text-sm transition-colors">
+                <a href="https://wa.me/212621532793" target="_blank" rel="noopener noreferrer" className="flex items-start gap-3 text-green-200 hover:text-orange-400 text-sm transition-colors">
                   <FaPhoneAlt size={15} className="mt-0.5 flex-shrink-0 text-orange-400" />
-                  +243 97 000 00 00
+                  +212 621 53 27 93
                 </a>
               </li>
               <li>
