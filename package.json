@@ -10,13 +10,15 @@
   },
   "dependencies": {
     "@emailjs/browser": "^4.4.1",
+    "@supabase/supabase-js": "^2.105.4",
     "framer-motion": "^11.0.0",
     "lucide-react": "^0.383.0",
     "react": "^18.3.0",
     "react-3d-icons": "^1.0.2",
     "react-dom": "^18.3.0",
     "react-icons": "^5.6.0",
-    "react-router-dom": "^6.22.0"
+    "react-router-dom": "^6.22.0",
+    "recharts": "^3.8.1"
   },
   "devDependencies": {
     "@types/react": "^18.3.0",

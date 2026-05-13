@@ -9,7 +9,7 @@ export default function Footer() {
           {/* Brand */}
           <div className="lg:col-span-1">
             <Link to="/" className="flex items-center gap-3 group">
-              <img src="logo.png" alt="logo KFK agrobusiness" className='w-36 sm:w-40 md:w-44 lg:w-48 h-auto object-contain' />
+              <img src="white_logo.png" alt="logo KFK agrobusiness" className='w-36 sm:w-40 md:w-44 lg:w-56 h-auto object-contain' />
 
             </Link>
             <p className="text-green-200 text-sm leading-relaxed mb-5">
@@ -19,7 +19,7 @@ export default function Footer() {
               <a href="#" className="w-9 h-9 bg-green-700 hover:bg-orange-600 rounded-lg flex items-center justify-center transition-colors duration-200">
                 <FaFacebook size={16} />
               </a>
-              <a href="https://wa.me/243970000000" target="_blank" rel="noopener noreferrer"
+              <a href="https://wa.me/212621532793" target="_blank" rel="noopener noreferrer"
                 className="w-9 h-9 bg-green-700 hover:bg-orange-600 rounded-lg flex items-center justify-center transition-colors duration-200">
                 <FaWhatsapp size={16} />
               </a>
@@ -55,10 +55,21 @@ export default function Footer() {
           <div>
             <h3 className="font-700 text-white mb-5 text-base">Nos Activités</h3>
             <ul className="space-y-2.5">
-              {['Production de maïs', 'Élevage de poules', 'Stockage agricole', 'Développement futur', 'Impact communautaire'].map(item => (
-                <li key={item} className="text-green-200 text-sm flex items-center gap-1.5">
-                  <span className="w-1 h-1 bg-orange-400 rounded-full"></span>
-                  {item}
+              {[
+                { label: 'Production de maïs',   path: '/nos-activites#agriculture' },
+                { label: 'Élevage de poules',     path: '/nos-activites#elevage' },
+                { label: 'Stockage agricole',     path: '/nos-activites#stockage' },
+                { label: 'Développement futur',   path: '/nos-activites#futur' },
+                { label: 'Impact communautaire',  path: '/impact-social' },
+              ].map(item => (
+                <li key={item.label}>
+                  <Link
+                    to={item.path}
+                    className="text-green-200 hover:text-orange-400 text-sm flex items-center gap-1.5 transition-colors duration-200"
+                  >
+                    <span className="w-1 h-1 bg-orange-400 rounded-full flex-shrink-0"></span>
+                    {item.label}
+                  </Link>
                 </li>
               ))}
             </ul>

@@ -177,7 +177,7 @@ function PartnerSection({
             </motion.button>
             <motion.a
               whileHover={{ scale: 1.02 }}
-              href="https://wa.me/243970000000"
+              href="https://wa.me/212621532793"
               target="_blank"
               rel="noopener noreferrer"
               className="flex items-center justify-center gap-2 py-3.5 px-5 bg-[#25D366] text-white font-bold rounded-md text-sm transition-all duration-200 hover:bg-[#20BA5A]"
@@ -480,7 +480,7 @@ export default function Partners() {
               <motion.a
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
-                href="https://wa.me/243970000000?text=Bonjour%2C%20je%20souhaite%20devenir%20partenaire%20de%20KFK%20Agro%20Business."
+                href="https://wa.me/212621532793?text=Bonjour%2C%20je%20souhaite%20devenir%20partenaire%20de%20KFK%20Agro%20Business."
                 target="_blank"
                 rel="noopener noreferrer"
                 className="inline-flex items-center gap-3 px-8 py-4 bg-[#25D366] text-white font-bold rounded-md shadow-xl transition-all hover:bg-[#20BA5A]"

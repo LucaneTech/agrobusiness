@@ -1,4 +1,5 @@
 import { motion } from 'framer-motion'
+import { Link } from 'react-router-dom'
 import {
   Users, Home, TrendingUp, Wheat, Heart,
   Handshake, ArrowRight, Quote
@@ -11,36 +12,42 @@ const impacts = [
     title: "Création d'emplois",
     desc: "Le projet mobilise déjà une vingtaine de personnes et prévoit la création progressive de 20 à 50 emplois directs dans les activités agricoles et d'élevage.",
     accent: 'green',
+    slug: 'emplois',
   },
   {
     icon: Home,
     title: 'Soutien aux familles rurales',
     desc: "En générant des revenus stables, KFK contribue directement à l'amélioration des conditions de vie des familles rurales de la région de Luebo.",
     accent: 'orange',
+    slug: 'familles-rurales',
   },
   {
     icon: TrendingUp,
     title: 'Autonomisation économique',
     desc: "Le projet forme et accompagne les jeunes agriculteurs, leur offrant des compétences durables et une autonomie économique réelle.",
     accent: 'green',
+    slug: 'autonomisation',
   },
   {
     icon: Wheat,
     title: 'Sécurité alimentaire',
     desc: "La production locale de maïs et d'œufs contribue à réduire la dépendance aux importations et renforce la disponibilité alimentaire locale.",
     accent: 'orange',
+    slug: 'securite-alimentaire',
   },
   {
     icon: Heart,
     title: 'Développement communautaire',
     desc: "KFK Agro Business s'inscrit dans une vision de développement holistique qui bénéficie à l'ensemble de la communauté locale.",
     accent: 'green',
+    slug: 'developpement-communautaire',
   },
   {
     icon: Handshake,
     title: 'Partenariats locaux',
     desc: "Nous collaborons avec des acteurs locaux, des institutions et des ONG pour maximiser l'impact social du projet sur le terrain.",
     accent: 'orange',
+    slug: null,
   },
 ]
 
@@ -228,13 +235,26 @@ export default function SocialImpact() {
                 </p>
 
                 {/* Read more link */}
-                <div className={`flex items-center gap-1 text-xs font-700
-                  opacity-0 group-hover:opacity-100 -translate-y-1
-                  group-hover:translate-y-0 transition-all duration-300
-                  ${item.accent === 'orange' ? 'text-orange-500' : 'text-green-600'}`}>
-                  En savoir plus
-                  <ArrowRight size={12} />
-                </div>
+                {item.slug ? (
+                  <Link
+                    to={`/impact-social/detail#${item.slug}`}
+                    className={`flex items-center gap-1 text-xs font-700
+                      opacity-0 group-hover:opacity-100 -translate-y-1
+                      group-hover:translate-y-0 transition-all duration-300
+                      ${item.accent === 'orange' ? 'text-orange-500' : 'text-green-600'}`}
+                  >
+                    En savoir plus
+                    <ArrowRight size={12} />
+                  </Link>
+                ) : (
+                  <div className={`flex items-center gap-1 text-xs font-700
+                    opacity-0 group-hover:opacity-100 -translate-y-1
+                    group-hover:translate-y-0 transition-all duration-300
+                    ${item.accent === 'orange' ? 'text-orange-500' : 'text-green-600'}`}>
+                    En savoir plus
+                    <ArrowRight size={12} />
+                  </div>
+                )}
 
                 {/* Watermark */}
                 <item.icon

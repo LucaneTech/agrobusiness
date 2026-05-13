@@ -42,9 +42,9 @@ export default function Navbar() {
           {/* Logo */}
           <Link to="/" className="flex items-center gap-3 group flex-shrink-0">
             <img
-              src="logo.png"
+              src="/color.png"
               alt="logo KFK agrobusiness"
-              className="w-28 sm:w-36 md:w-40 lg:w-44 xl:w-48 h-auto object-contain"
+              className="w-36 md:w-40 lg:w-48 h-auto object-contain"
             />
           </Link>
 

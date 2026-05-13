@@ -62,25 +62,25 @@ export default function Contact() {
                 simplement prendre contact avec notre équipe ? Nous sommes à votre écoute.
               </p>
               <div className="space-y-6">
-                <a href="mailto:kfkagrobusiness@gmail.com" className="flex items-start gap-4 group">
+                <a href="mailto:contact@kfkagrobusiness.com" className="flex items-start gap-4 group">
                   <div className="w-12 h-12 bg-green-100 rounded-md flex items-center justify-center text-green-700 flex-shrink-0 group-hover:bg-green-700 group-hover:text-white transition-all duration-200">
                     <FaEnvelope size={20} />
                   </div>
                   <div>
                     <div className="text-xs text-green-500 uppercase font-bold tracking-wider mb-1">Email</div>
                     <div className="text-green-800 font-semibold text-sm group-hover:text-orange-600 transition-colors">
-                      kfkagrobusiness@gmail.com
+                      contact@kfkagrobusiness.com
                     </div>
                   </div>
                 </a>
-                <a href="https://wa.me/243970000000" className="flex items-start gap-4 group">
+                <a href="https://wa.me/212621532793" className="flex items-start gap-4 group">
                   <div className="w-12 h-12 bg-green-100 rounded-md flex items-center justify-center text-green-700 flex-shrink-0 group-hover:bg-[#25D366] group-hover:text-white transition-all duration-200">
                     <FaPhoneAlt size={20} />
                   </div>
                   <div>
                     <div className="text-xs text-green-500 uppercase font-bold tracking-wider mb-1">Téléphone / WhatsApp</div>
                     <div className="text-green-800 font-semibold text-sm group-hover:text-orange-600 transition-colors">
-                      +243 97 000 00 00
+                       +212 621 53 27 93
                     </div>
                   </div>
                 </a>
@@ -102,7 +102,7 @@ export default function Contact() {
               <motion.a
                 whileHover={{ scale: 1.02 }}
                 whileTap={{ scale: 0.98 }}
-                href="https://wa.me/243970000000?text=Bonjour%20KFK%20Agro%20Business%2C%20je%20souhaite%20en%20savoir%20plus."
+                href="https://wa.me/212621532793?text=Bonjour%20KFK%20Agro%20Business%2C%20je%20souhaite%20en%20savoir%20plus."
                 target="_blank"
                 rel="noopener noreferrer"
                 className="mt-8 flex items-center gap-3 w-full bg-[#25D366] hover:bg-[#20BA5A] text-white font-bold py-4 px-6 rounded-md shadow-lg shadow-green-500/20 transition-all duration-200"

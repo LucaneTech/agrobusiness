@@ -22,7 +22,7 @@ export default function PageHero({ title, subtitle, image, accent = 'green' }: P
           transition={{ duration: 0.8, ease: 'easeOut' }}
         >
           <div className={`inline-block px-2 sm:px-2.5 md:px-3 py-0.5 sm:py-1 rounded-full text-[10px] sm:text-xs font-bold mb-2 sm:mb-2.5 md:mb-3 ${
-            accent === 'orange' ? 'bg-kfk-orange-500 text-white' : 'bg-green-600 text-white'
+            accent === 'orange' ? 'bg-orange-500 text-white' : 'bg-green-600 text-white'
           }`}>
             KFK AGROBUSINESS
           </div>

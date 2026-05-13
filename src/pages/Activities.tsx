@@ -1,7 +1,26 @@
+import { useEffect } from 'react'
+import { useLocation } from 'react-router-dom'
 import { motion } from 'framer-motion'
 import { FaCheckCircle, FaSeedling, FaTruck } from 'react-icons/fa'
 import { GiCorn, GiWheat } from 'react-icons/gi'
 import PageHero from '../components/PageHero'
+
+function getDocumentTop(el: HTMLElement): number {
+  let top = 0
+  let node: HTMLElement | null = el
+  while (node) {
+    top += node.offsetTop
+    node = node.offsetParent as HTMLElement | null
+  }
+  return top
+}
+
+function scrollToId(id: string) {
+  const el = document.getElementById(id)
+  if (!el) return
+  const navHeight = document.querySelector('nav')?.offsetHeight ?? 72
+  window.scrollTo({ top: Math.max(0, getDocumentTop(el) - navHeight - 4), behavior: 'smooth' })
+}
 
 const activities = [
   {
@@ -71,6 +90,15 @@ const activities = [
 ]
 
 export default function Activities() {
+  const { hash } = useLocation()
+
+  useEffect(() => {
+    const id = hash.replace('#', '')
+    if (!id) return
+    const t = setTimeout(() => scrollToId(id), 700)
+    return () => clearTimeout(t)
+  }, [hash])
+
   return (
     <motion.div
       initial={{ opacity: 0 }}
@@ -91,6 +119,7 @@ export default function Activities() {
             {activities.map((act, i) => (
               <motion.div
                 key={act.id}
+                id={act.id}
                 initial={{ opacity: 0, y: 40 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
@@ -102,7 +131,7 @@ export default function Activities() {
                 <div className={i % 2 === 1 ? 'lg:col-start-2' : ''}>
                   <div className={`inline-flex items-center gap-2 px-4 py-2 rounded-md text-sm font-bold mb-5 ${
                     act.color === 'orange'
-                      ? 'bg-kfk-orange-100 text-kfk-orange-700'
+                      ? 'bg-orange-100 text-orange-700'
                       : 'bg-green-100 text-green-700'
                   }`}>
                     {/* <span className="text-xl">{act.emoji}</span> */}
@@ -122,7 +151,7 @@ export default function Activities() {
                       >
                         <FaCheckCircle
                           size={17}
-                          className={act.color === 'orange' ? 'text-kfk-orange-500' : 'text-green-600'}
+                          className={act.color === 'orange' ? 'text-orange-500' : 'text-green-600'}
                         />
                         <span className="text-green-800 text-sm font-medium">{p}</span>
                       </motion.div>
