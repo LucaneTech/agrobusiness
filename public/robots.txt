@@ -1,0 +1,8 @@
+User-agent: *
+Allow: /
+
+# Exclude private areas
+Disallow: /dashboard/
+Disallow: /auth/
+
+Sitemap: https://kfkagrobusiness.com/sitemap.xml
