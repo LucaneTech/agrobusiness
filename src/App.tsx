@@ -31,7 +31,15 @@ import NotFound from './pages/NotFound'
 
 function ScrollToTop() {
   const { pathname } = useLocation()
-  useEffect(() => { window.scrollTo({ top: 0, behavior: 'smooth' }) }, [pathname])
+  useEffect(() => {
+    // Hash in URL = section scroll takes over → instant reset only
+    // No hash = smooth scroll to top
+    if (window.location.hash) {
+      window.scrollTo(0, 0)
+    } else {
+      window.scrollTo({ top: 0, behavior: 'smooth' })
+    }
+  }, [pathname])
   return null
 }
 

@@ -6,55 +6,61 @@ import {
 } from 'lucide-react'
 import PageHero from '../components/PageHero'
 
-const impacts = [
-  {
-    icon: Users,
-    title: "Création d'emplois",
-    desc: "Le projet mobilise déjà une vingtaine de personnes et prévoit la création progressive de 20 à 50 emplois directs dans les activités agricoles et d'élevage.",
-    accent: 'green',
-    slug: 'emplois',
-  },
-  {
-    icon: Home,
-    title: 'Soutien aux familles rurales',
-    desc: "En générant des revenus stables, KFK contribue directement à l'amélioration des conditions de vie des familles rurales de la région de Luebo.",
-    accent: 'orange',
-    slug: 'familles-rurales',
-  },
-  {
-    icon: TrendingUp,
-    title: 'Autonomisation économique',
-    desc: "Le projet forme et accompagne les jeunes agriculteurs, leur offrant des compétences durables et une autonomie économique réelle.",
-    accent: 'green',
-    slug: 'autonomisation',
-  },
-  {
-    icon: Wheat,
-    title: 'Sécurité alimentaire',
-    desc: "La production locale de maïs et d'œufs contribue à réduire la dépendance aux importations et renforce la disponibilité alimentaire locale.",
-    accent: 'orange',
-    slug: 'securite-alimentaire',
-  },
-  {
-    icon: Heart,
-    title: 'Développement communautaire',
-    desc: "KFK Agro Business s'inscrit dans une vision de développement holistique qui bénéficie à l'ensemble de la communauté locale.",
-    accent: 'green',
-    slug: 'developpement-communautaire',
-  },
-  {
-    icon: Handshake,
-    title: 'Partenariats locaux',
-    desc: "Nous collaborons avec des acteurs locaux, des institutions et des ONG pour maximiser l'impact social du projet sur le terrain.",
-    accent: 'orange',
-    slug: null,
-  },
-]
+const impacts: {
+  icon: React.ElementType
+  title: string
+  desc: string
+  accent: 'green' | 'orange'
+  slug: string | null
+}[] = [
+    {
+      icon: Users,
+      title: "Création d'emplois",
+      desc: "Le projet mobilise déjà une vingtaine de personnes et prévoit la création progressive de 20 à 50 emplois directs dans les activités agricoles et d'élevage.",
+      accent: 'green',
+      slug: 'emplois',
+    },
+    {
+      icon: Home,
+      title: 'Soutien aux familles rurales',
+      desc: "En générant des revenus stables, KFK contribue directement à l'amélioration des conditions de vie des familles rurales de la région de Luebo.",
+      accent: 'orange',
+      slug: 'familles-rurales',
+    },
+    {
+      icon: TrendingUp,
+      title: 'Autonomisation économique',
+      desc: "Le projet forme et accompagne les jeunes agriculteurs, leur offrant des compétences durables et une autonomie économique réelle.",
+      accent: 'green',
+      slug: 'autonomisation',
+    },
+    {
+      icon: Wheat,
+      title: 'Sécurité alimentaire',
+      desc: "La production locale de maïs et d'œufs contribue à réduire la dépendance aux importations et renforce la disponibilité alimentaire locale.",
+      accent: 'orange',
+      slug: 'securite-alimentaire',
+    },
+    {
+      icon: Heart,
+      title: 'Développement communautaire',
+      desc: "KFK Agro Business s'inscrit dans une vision de développement holistique qui bénéficie à l'ensemble de la communauté locale.",
+      accent: 'green',
+      slug: 'developpement-communautaire',
+    },
+    {
+      icon: Handshake,
+      title: 'Partenariats locaux',
+      desc: "Nous collaborons avec des acteurs locaux, des institutions et des ONG pour maximiser l'impact social du projet sur le terrain.",
+      accent: 'orange',
+      slug: null,
+    },
+  ]
 
 const counters = [
-  { value: '20+', label: 'Personnes mobilisées', icon: Users,      color: 'text-green-700',  bg: 'bg-green-30',  border: 'border-green-200' },
-  { value: '50',  label: 'Emplois prévus',       icon: TrendingUp, color: 'text-orange-600', bg: 'bg-orange-50', border: 'border-orange-200' },
-  { value: '100%',label: 'Impact local',         icon: Heart,      color: 'text-green-800',  bg: 'bg-green-50',  border: 'border-green-200' },
+  { value: '20+', label: 'Personnes mobilisées', icon: Users, color: 'text-green-700', bg: 'bg-green-30', border: 'border-green-200' },
+  { value: '50', label: 'Emplois prévus', icon: TrendingUp, color: 'text-orange-600', bg: 'bg-orange-50', border: 'border-orange-200' },
+  { value: '100%', label: 'Impact local', icon: Heart, color: 'text-green-800', bg: 'bg-green-50', border: 'border-green-200' },
 ]
 
 export default function SocialImpact() {
@@ -145,9 +151,9 @@ export default function SocialImpact() {
               className="grid grid-cols-2 gap-4"
             >
               {[
-                { src: 'https://images.unsplash.com/photo-1556761175-4b46a572b786?w=400&auto=format&fit=crop&q=80', alt: 'Équipe agricole',      mt: '' },
-                { src: 'https://images.unsplash.com/photo-1488521787991-ed7bbaae773c?w=400&auto=format&fit=crop&q=80', alt: 'Communauté rurale',   mt: 'mt-8' },
-                { src: 'https://images.unsplash.com/photo-1464226184884-fa280b87c399?w=400&auto=format&fit=crop&q=80', alt: 'Travail agricole',    mt: '-mt-8' },
+                { src: 'https://images.unsplash.com/photo-1556761175-4b46a572b786?w=400&auto=format&fit=crop&q=80', alt: 'Équipe agricole', mt: '' },
+                { src: 'https://images.unsplash.com/photo-1488521787991-ed7bbaae773c?w=400&auto=format&fit=crop&q=80', alt: 'Communauté rurale', mt: 'mt-8' },
+                { src: 'https://images.unsplash.com/photo-1464226184884-fa280b87c399?w=400&auto=format&fit=crop&q=80', alt: 'Travail agricole', mt: '-mt-8' },
                 { src: 'https://images.unsplash.com/photo-1599940778173-e276d4acb2bb?w=400&auto=format&fit=crop&q=80', alt: 'Jeunes agriculteurs', mt: '' },
               ].map((img, i) => (
                 <div key={i}
@@ -197,73 +203,101 @@ export default function SocialImpact() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: i * 0.08, duration: 0.5 }}
-                whileHover={{ y: -5, transition: { duration: 0.2 } }}
-                className="group bg-white rounded-md p-7 shadow-sm
-                  hover:shadow-xl border border-gray-100
-                  hover:border-green-100 transition-all duration-300
-                  overflow-hidden relative"
+                whileHover={{
+                  y: -5,
+                  transition: { duration: 0.2 },
+                }}
+                className="group relative overflow-hidden bg-white rounded-xl
+      border border-gray-100 shadow-sm hover:shadow-xl
+      transition-all duration-300"
               >
-                {/* Top accent */}
-                <div className={`absolute top-0 left-0 right-0 h-0.5 rounded-t-2xl
-                  bg-gradient-to-r from-transparent
-                  ${item.accent === 'orange'
-                    ? 'via-orange-400/60 group-hover:via-orange-500'
-                    : 'via-green-500/60 group-hover:via-green-600'}
-                  to-transparent transition-all duration-300`}
+                {/* TOP ACCENT */}
+                <div
+                  className={`absolute top-0 left-0 right-0 h-[2px]
+        bg-gradient-to-r from-transparent
+        ${item.accent === 'orange'
+                      ? 'via-orange-400 group-hover:via-orange-500'
+                      : 'via-green-500 group-hover:via-green-600'
+                    }
+        to-transparent transition-all duration-300`}
                 />
 
-                {/* Icon */}
-                <div className={`w-12 h-12 rounded-md mb-5 flex items-center justify-center
-                  shadow-sm transition-all duration-300
-                  ${item.accent === 'orange'
-                    ? 'bg-orange-50 border border-orange-100 group-hover:bg-orange-100'
-                    : 'bg-green-50 border border-green-100 group-hover:bg-green-100'}`}
-                >
+                {/* CARD CONTENT */}
+                <div className="p-6 md:p-7 relative z-10">
+                  {/* ICON */}
+                  <div
+                    className={`w-12 h-12 rounded-xl mb-5 flex items-center justify-center
+          border transition-all duration-300
+          ${item.accent === 'orange'
+                        ? 'bg-orange-50 border-orange-100 group-hover:bg-orange-100'
+                        : 'bg-green-50 border-green-100 group-hover:bg-green-100'
+                      }`}
+                  >
+                    <item.icon
+                      size={20}
+                      className={
+                        item.accent === 'orange'
+                          ? 'text-orange-500 group-hover:text-orange-600'
+                          : 'text-green-600 group-hover:text-green-700'
+                      }
+                    />
+                  </div>
+
+                  {/* TITLE */}
+                  <h3 className="text-[17px] font-800 text-green-900 mb-3 leading-snug">
+                    {item.title}
+                  </h3>
+
+                  {/* DESCRIPTION */}
+                  <p className="text-gray-500 text-sm leading-relaxed font-400 mb-5">
+                    {item.desc}
+                  </p>
+
+                  {/* CTA */}
+                  {item.slug ? (
+                    <Link
+                      to={`/impact-social/detail#${item.slug}`}
+                      className={`inline-flex items-center gap-1.5 text-sm font-700
+            transition-all duration-300
+            ${item.accent === 'orange'
+                          ? 'text-orange-500 hover:text-orange-600'
+                          : 'text-green-600 hover:text-green-700'
+                        }`}
+                    >
+                      En savoir plus
+
+                      <ArrowRight
+                        size={14}
+                        className="transition-transform duration-300 group-hover:translate-x-1"
+                      />
+                    </Link>
+                  ) : (
+                    <div
+                      className={`inline-flex items-center gap-1.5 text-sm font-700
+            transition-all duration-300
+            ${item.accent === 'orange'
+                          ? 'text-orange-500'
+                          : 'text-green-600'
+                        }`}
+                    >
+                      En savoir plus
+
+                      <ArrowRight size={14} />
+                    </div>
+                  )}
+
+                  {/* WATERMARK */}
                   <item.icon
-                    size={20}
-                    className={item.accent === 'orange'
-                      ? 'text-orange-500 group-hover:text-orange-600'
-                      : 'text-green-600 group-hover:text-green-700'}
+                    size={90}
+                    strokeWidth={0.5}
+                    className={`absolute -bottom-5 -right-5 opacity-[0.04]
+          group-hover:opacity-[0.07] transition-opacity duration-300
+          ${item.accent === 'orange'
+                        ? 'text-orange-500'
+                        : 'text-green-600'
+                      }`}
                   />
                 </div>
-
-                <h3 className="text-base font-800 text-green-900 mb-2.5">
-                  {item.title}
-                </h3>
-                <p className="text-gray-500 text-sm leading-relaxed font-400 mb-4">
-                  {item.desc}
-                </p>
-
-                {/* Read more link */}
-                {item.slug ? (
-                  <Link
-                    to={`/impact-social/detail#${item.slug}`}
-                    className={`flex items-center gap-1 text-xs font-700
-                      opacity-0 group-hover:opacity-100 -translate-y-1
-                      group-hover:translate-y-0 transition-all duration-300
-                      ${item.accent === 'orange' ? 'text-orange-500' : 'text-green-600'}`}
-                  >
-                    En savoir plus
-                    <ArrowRight size={12} />
-                  </Link>
-                ) : (
-                  <div className={`flex items-center gap-1 text-xs font-700
-                    opacity-0 group-hover:opacity-100 -translate-y-1
-                    group-hover:translate-y-0 transition-all duration-300
-                    ${item.accent === 'orange' ? 'text-orange-500' : 'text-green-600'}`}>
-                    En savoir plus
-                    <ArrowRight size={12} />
-                  </div>
-                )}
-
-                {/* Watermark */}
-                <item.icon
-                  size={80}
-                  strokeWidth={0.5}
-                  className={`absolute -bottom-4 -right-4 opacity-[0.04]
-                    group-hover:opacity-[0.07] transition-opacity duration-300
-                    ${item.accent === 'orange' ? 'text-orange-500' : 'text-green-600'}`}
-                />
               </motion.div>
             ))}
           </div>
