@@ -7,7 +7,8 @@
   VITE_EMAILJS_SERVICE_ID = "service_ba9mano"
   VITE_EMAILJS_TEMPLATE_CONTACT = "template_5sm4vxg"
   VITE_EMAILJS_TEMPLATE_PARTNER = "template_xxgfszr"
-
+  VITE_SUPABASE_URL= "https://saqquwvtusfcgmiyhxzj.supabase.co"
+  VITE_SUPABASE_ANON_KEY= "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InNhcXF1d3Z0dXNmY2dtaXloeHpqIiwicm9sZSI6ImFub24iLCJpYXQiOjE3Nzg2NzcwMDIsImV4cCI6MjA5NDI1MzAwMn0.zTZlduYEd_OJxgn4bbzu6iGg8coiMyfEgY1bC3GO5OU"
 
 [[redirects]]
   from = "/*"
