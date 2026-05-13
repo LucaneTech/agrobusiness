@@ -5,9 +5,7 @@
 [build.environment]
   VITE_EMAILJS_PUBLIC_KEY=l8ELBgHiPH99boLfb
   VITE_EMAILJS_SERVICE_ID=service_ba9mano
-  # Template pour le formulaire de contact général (page Contact)
   VITE_EMAILJS_TEMPLATE_CONTACT=template_5sm4vxg
-  # Template pour les formulaires partenaires (page Partenaires)
   VITE_EMAILJS_TEMPLATE_PARTNER=template_xxgfszr
 
 
