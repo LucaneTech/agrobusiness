@@ -1,11 +1,18 @@
-import { useState } from 'react'
+import { useState, useRef } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
+import emailjs from '@emailjs/browser'
 import {
   FaDollarSign, FaUsers, FaCheckCircle, FaPaperPlane,
   FaChevronDown, FaChevronUp, FaBoxOpen, FaLeaf, FaHandshake,
-  FaPhoneAlt, FaWhatsapp
+  FaPhoneAlt, FaWhatsapp, FaSpinner, FaExclamationCircle
 } from 'react-icons/fa'
 import PageHero from '../components/PageHero'
+
+const SERVICE_ID  = import.meta.env.VITE_EMAILJS_SERVICE_ID
+const TEMPLATE_ID = import.meta.env.VITE_EMAILJS_TEMPLATE_PARTNER
+const PUBLIC_KEY  = import.meta.env.VITE_EMAILJS_PUBLIC_KEY
+
+type Status = 'idle' | 'sending' | 'success' | 'error'
 
 // ─── Form types ────────────────────────────────────────────────
 interface FormState {
@@ -44,9 +51,10 @@ function PartnerSection({
   id, icon, label, title, subtitle, image, color,
   description, points, ctaLabel, formTitle, formType, index
 }: PartnerSectionProps) {
+  const formRef = useRef<HTMLFormElement>(null)
   const [open, setOpen] = useState(false)
   const [form, setForm] = useState<FormState>(initialForm)
-  const [sent, setSent] = useState(false)
+  const [status, setStatus] = useState<Status>('idle')
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
     const { name, value, type } = e.target
@@ -56,9 +64,25 @@ function PartnerSection({
     }))
   }
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
-    setSent(true)
+    setStatus('sending')
+
+    try {
+      await emailjs.sendForm(SERVICE_ID, TEMPLATE_ID, formRef.current!, PUBLIC_KEY)
+      setStatus('success')
+    } catch {
+      setStatus('error')
+    }
+  }
+
+  const handleToggle = () => {
+    setOpen(prev => !prev)
+    if (open) {
+      // reset when closing
+      setStatus('idle')
+      setForm(initialForm)
+    }
   }
 
   const colorMap = {
@@ -76,11 +100,11 @@ function PartnerSection({
     },
     orange: {
       accent: 'bg-orange-500',
-      accentText: 'text-kfk-orange-600',
+      accentText: 'text-orange-600',
       accentLight: 'bg-orange-50',
       badge: 'bg-orange-100 text-orange-800',
-      button: 'bg-orange-500 hover:bg-kfk-orange-600 shadow-orange-500/25',
-      check: 'text-kfk-orange-500',
+      button: 'bg-orange-500 hover:bg-orange-600 shadow-orange-500/25',
+      check: 'text-orange-500',
       ring: 'focus:ring-orange-400',
       border: 'border-orange-200',
       gradient: 'from-orange-950',
@@ -111,9 +135,9 @@ function PartnerSection({
       transition={{ duration: 0.7 }}
       className="mb-20"
     >
-      <div className={`grid lg:grid-cols-2 gap-0 rounded-3xl overflow-hidden shadow-xl ${isEven ? '' : ''}`}>
+      <div className={`grid lg:grid-cols-2 gap-0 rounded-3xl overflow-hidden shadow-xl`}>
         {/* Image */}
-        <div className={`relative h-72 lg:h-auto img-zoom ${!isEven ? 'lg:order-2' : ''}`}>
+        <div className={`relative h-48 sm:h-64 md:h-72 lg:h-auto img-zoom ${!isEven ? 'lg:order-2' : ''}`}>
           <img src={image} alt={title} className="w-full h-full object-cover" />
           <div className={`absolute inset-0 bg-gradient-to-t ${c.gradient}/80 via-transparent to-transparent`} />
           <div className="absolute bottom-6 left-6">
@@ -125,8 +149,8 @@ function PartnerSection({
         </div>
 
         {/* Content */}
-        <div className={`bg-white p-8 lg:p-10 flex flex-col ${!isEven ? 'lg:order-1' : ''}`}>
-          <h2 className="text-3xl font-bold text-green-900 mb-2">{title}</h2>
+        <div className={`bg-white p-6 sm:p-8 lg:p-10 flex flex-col ${!isEven ? 'lg:order-1' : ''}`}>
+          <h2 className="text-xl sm:text-2xl md:text-3xl font-bold text-green-900 mb-2">{title}</h2>
           <p className={`text-sm font-semibold ${c.accentText} mb-4`}>{subtitle}</p>
           <p className="text-green-700/70 text-sm leading-relaxed mb-6">{description}</p>
 
@@ -145,7 +169,7 @@ function PartnerSection({
             <motion.button
               whileHover={{ scale: 1.02 }}
               whileTap={{ scale: 0.98 }}
-              onClick={() => { setOpen(!open); setSent(false) }}
+              onClick={handleToggle}
               className={`flex-1 flex items-center justify-center gap-2 py-3.5 px-6 ${c.button} text-white font-bold rounded-md shadow-lg transition-all duration-200 text-sm`}
             >
               {ctaLabel}
@@ -173,9 +197,10 @@ function PartnerSection({
                 transition={{ duration: 0.4 }}
                 className="overflow-hidden"
               >
-                <div className={`${c.accentLight} rounded-2xl p-6 mt-2`}>
+                <div className={`${c.accentLight} rounded-2xl p-5 sm:p-6 mt-2`}>
                   <h4 className="text-green-900 font-bold mb-4 text-base">{formTitle}</h4>
-                  {sent ? (
+
+                  {status === 'success' ? (
                     <motion.div
                       initial={{ opacity: 0, scale: 0.9 }}
                       animate={{ opacity: 1, scale: 1 }}
@@ -185,10 +210,20 @@ function PartnerSection({
                         <FaCheckCircle size={28} className="text-white" />
                       </div>
                       <p className="text-green-800 font-bold text-lg mb-1">Demande envoyée !</p>
-                      <p className="text-green-600/70 text-sm">Notre équipe vous contactera très prochainement.</p>
+                      <p className="text-green-600/70 text-sm mb-4">Notre équipe vous contactera très prochainement.</p>
+                      <button
+                        onClick={() => { setStatus('idle'); setForm(initialForm) }}
+                        className={`px-5 py-2.5 ${c.accent} text-white font-bold rounded-md text-sm transition-colors`}
+                      >
+                        Nouvelle demande
+                      </button>
                     </motion.div>
                   ) : (
-                    <form onSubmit={handleSubmit} className="space-y-4">
+                    <form ref={formRef} onSubmit={handleSubmit} className="space-y-4">
+                      {/* Champ caché pour identifier le type de partenariat dans l'email */}
+                      <input type="hidden" name="partner_type" value={formType} />
+                      <input type="hidden" name="partner_label" value={label} />
+
                       <div className="grid sm:grid-cols-2 gap-4">
                         <div>
                           <label className="block text-green-800 text-xs font-semibold mb-1.5">Nom complet *</label>
@@ -254,14 +289,36 @@ function PartnerSection({
                           J'accepte d'être contacté(e) par KFK Agro Business concernant ma demande.
                         </label>
                       </div>
+
+                      {status === 'error' && (
+                        <motion.div
+                          initial={{ opacity: 0, y: -8 }}
+                          animate={{ opacity: 1, y: 0 }}
+                          className="flex items-center gap-3 bg-red-50 border border-red-200 text-red-700 rounded-md px-4 py-3 text-sm"
+                        >
+                          <FaExclamationCircle className="flex-shrink-0" size={16} />
+                          Une erreur est survenue. Réessayez ou contactez-nous via WhatsApp.
+                        </motion.div>
+                      )}
+
                       <motion.button
-                        whileHover={{ scale: 1.01 }}
-                        whileTap={{ scale: 0.97 }}
+                        whileHover={{ scale: status === 'sending' ? 1 : 1.01 }}
+                        whileTap={{ scale: status === 'sending' ? 1 : 0.97 }}
                         type="submit"
-                        className={`w-full flex items-center justify-center gap-2 py-3 ${c.button} text-white font-bold rounded-md shadow-lg transition-all text-sm`}
+                        disabled={status === 'sending'}
+                        className={`w-full flex items-center justify-center gap-2 py-3 ${c.button} disabled:opacity-50 disabled:cursor-not-allowed text-white font-bold rounded-md shadow-lg transition-all text-sm`}
                       >
-                        <FaPaperPlane size={15} />
-                        Envoyer ma demande
+                        {status === 'sending' ? (
+                          <>
+                            <FaSpinner size={15} className="animate-spin" />
+                            Envoi en cours...
+                          </>
+                        ) : (
+                          <>
+                            <FaPaperPlane size={15} />
+                            Envoyer ma demande
+                          </>
+                        )}
                       </motion.button>
                     </form>
                   )}
@@ -412,7 +469,7 @@ export default function Partners() {
             <div className="w-16 h-16 bg-white/10 rounded-2xl flex items-center justify-center mx-auto mb-6">
               <FaHandshake size={32} className="text-white" />
             </div>
-            <h2 className="text-4xl font-bold text-white mb-5">
+            <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-white mb-5">
               Envie de collaborer avec nous ?
             </h2>
             <p className="text-green-100/80 mb-10 max-w-2xl mx-auto leading-relaxed">

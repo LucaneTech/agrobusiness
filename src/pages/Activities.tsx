@@ -87,7 +87,7 @@ export default function Activities() {
       {/* Activity Cards */}
       <section className="py-20 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="space-y-20">
+          <div className="space-y-14 sm:space-y-16 md:space-y-20">
             {activities.map((act, i) => (
               <motion.div
                 key={act.id}
@@ -108,7 +108,7 @@ export default function Activities() {
                     {/* <span className="text-xl">{act.emoji}</span> */}
                     {act.label}
                   </div>
-                  <h2 className="text-4xl font-bold text-green-900 mb-4">{act.title}</h2>
+                  <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-green-900 mb-4">{act.title}</h2>
                   <p className="text-green-700/70 leading-relaxed mb-6 text-base">{act.desc}</p>
                   <div className="space-y-3">
                     {act.points.map((p, j) => (
@@ -149,7 +149,7 @@ export default function Activities() {
             viewport={{ once: true }}
             className="text-center mb-14"
           >
-            <h2 className="text-4xl font-bold text-green-900 mb-4">Notre processus agricole</h2>
+            <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-green-900 mb-4">Notre processus agricole</h2>
             <p className="text-green-700/70">De la préparation des sols à la commercialisation</p>
           </motion.div>
           <div className="grid grid-cols-2 md:grid-cols-4 gap-6">

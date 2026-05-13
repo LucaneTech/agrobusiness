@@ -9,7 +9,7 @@ export default function Footer() {
           {/* Brand */}
           <div className="lg:col-span-1">
             <Link to="/" className="flex items-center gap-3 group">
-              <img src="logo.png" alt="logo KFK agrobusiness" className='w-48 h-auto object-contain' />
+              <img src="logo.png" alt="logo KFK agrobusiness" className='w-36 sm:w-40 md:w-44 lg:w-48 h-auto object-contain' />
 
             </Link>
             <p className="text-green-200 text-sm leading-relaxed mb-5">
@@ -93,11 +93,11 @@ export default function Footer() {
 
       {/* Bottom bar */}
       <div className="border-t border-green-800">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 flex flex-col sm:flex-row items-center justify-between gap-2">
-          <p className="text-green-300 text-xs text-center">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 flex flex-col sm:flex-row items-center justify-between gap-1 sm:gap-2">
+          <p className="text-green-300 text-[11px] sm:text-xs text-center">
             © 2024 KFK Agro Business. Tous droits réservés.
           </p>
-          <p className="text-green-300 text-xs">
+          <p className="text-green-300 text-[11px] sm:text-xs text-center sm:text-right">
             KFK Agro Business — Ensemble, cultivons l'avenir
           </p>
         </div>

@@ -1,20 +1,35 @@
-import { useState } from 'react'
+import { useState, useRef } from 'react'
 import { motion } from 'framer-motion'
-import { FaEnvelope, FaPhoneAlt, FaMapMarkerAlt, FaPaperPlane, FaCheckCircle, FaWhatsapp } from 'react-icons/fa'
+import emailjs from '@emailjs/browser'
+import { FaEnvelope, FaPhoneAlt, FaMapMarkerAlt, FaPaperPlane, FaCheckCircle, FaWhatsapp, FaExclamationCircle, FaSpinner } from 'react-icons/fa'
 import PageHero from '../components/PageHero'
 
+const SERVICE_ID  = import.meta.env.VITE_EMAILJS_SERVICE_ID
+const TEMPLATE_ID = import.meta.env.VITE_EMAILJS_TEMPLATE_CONTACT
+const PUBLIC_KEY  = import.meta.env.VITE_EMAILJS_PUBLIC_KEY
+
+type Status = 'idle' | 'sending' | 'success' | 'error'
+
 export default function Contact() {
+  const formRef = useRef<HTMLFormElement>(null)
   const [form, setForm] = useState({ nom: '', email: '', sujet: '', message: '' })
-  const [sent, setSent] = useState(false)
+  const [status, setStatus] = useState<Status>('idle')
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
     setForm({ ...form, [e.target.name]: e.target.value })
   }
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
-    setSent(true)
-    setForm({ nom: '', email: '', sujet: '', message: '' })
+    setStatus('sending')
+
+    try {
+      await emailjs.sendForm(SERVICE_ID, TEMPLATE_ID, formRef.current!, PUBLIC_KEY)
+      setStatus('success')
+      setForm({ nom: '', email: '', sujet: '', message: '' })
+    } catch {
+      setStatus('error')
+    }
   }
 
   return (
@@ -33,6 +48,7 @@ export default function Contact() {
       <section className="py-20 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid lg:grid-cols-5 gap-14">
+
             {/* Contact Info */}
             <motion.div
               initial={{ opacity: 0, x: -40 }}
@@ -40,36 +56,30 @@ export default function Contact() {
               viewport={{ once: true }}
               className="lg:col-span-2"
             >
-              <h2 className="text-3xl font-bold text-green-900 mb-6">Contactez-nous</h2>
+              <h2 className="text-2xl sm:text-3xl font-bold text-green-900 mb-6">Contactez-nous</h2>
               <p className="text-green-700/70 mb-8 leading-relaxed text-sm">
                 Vous souhaitez en savoir plus sur KFK Agro Business, devenir partenaire ou
                 simplement prendre contact avec notre équipe ? Nous sommes à votre écoute.
               </p>
               <div className="space-y-6">
-                <a
-                  href="mailto:kfkagrobusiness@gmail.com"
-                  className="flex items-start gap-4 group"
-                >
+                <a href="mailto:kfkagrobusiness@gmail.com" className="flex items-start gap-4 group">
                   <div className="w-12 h-12 bg-green-100 rounded-md flex items-center justify-center text-green-700 flex-shrink-0 group-hover:bg-green-700 group-hover:text-white transition-all duration-200">
                     <FaEnvelope size={20} />
                   </div>
                   <div>
                     <div className="text-xs text-green-500 uppercase font-bold tracking-wider mb-1">Email</div>
-                    <div className="text-green-800 font-semibold text-sm group-hover:text-kfk-orange-600 transition-colors">
+                    <div className="text-green-800 font-semibold text-sm group-hover:text-orange-600 transition-colors">
                       kfkagrobusiness@gmail.com
                     </div>
                   </div>
                 </a>
-                <a
-                  href="https://wa.me/243970000000"
-                  className="flex items-start gap-4 group"
-                >
+                <a href="https://wa.me/243970000000" className="flex items-start gap-4 group">
                   <div className="w-12 h-12 bg-green-100 rounded-md flex items-center justify-center text-green-700 flex-shrink-0 group-hover:bg-[#25D366] group-hover:text-white transition-all duration-200">
                     <FaPhoneAlt size={20} />
                   </div>
                   <div>
                     <div className="text-xs text-green-500 uppercase font-bold tracking-wider mb-1">Téléphone / WhatsApp</div>
-                    <div className="text-green-800 font-semibold text-sm group-hover:text-kfk-orange-600 transition-colors">
+                    <div className="text-green-800 font-semibold text-sm group-hover:text-orange-600 transition-colors">
                       +243 97 000 00 00
                     </div>
                   </div>
@@ -109,11 +119,11 @@ export default function Contact() {
               viewport={{ once: true }}
               className="lg:col-span-3"
             >
-              <div className="bg-green-50 rounded-3xl p-8">
-                <h3 className="text-2xl font-bold text-green-900 mb-2">Envoyez-nous un message</h3>
+              <div className="bg-green-50 rounded-3xl p-6 sm:p-8">
+                <h3 className="text-xl sm:text-2xl font-bold text-green-900 mb-2">Envoyez-nous un message</h3>
                 <p className="text-green-700/60 text-sm mb-8">Nous vous répondrons dans les meilleurs délais.</p>
 
-                {sent ? (
+                {status === 'success' ? (
                   <motion.div
                     initial={{ scale: 0.8, opacity: 0 }}
                     animate={{ scale: 1, opacity: 1 }}
@@ -125,14 +135,14 @@ export default function Contact() {
                     <h4 className="text-2xl font-bold text-green-800 mb-2">Message envoyé !</h4>
                     <p className="text-green-600/70 mb-6">Merci pour votre message. Notre équipe vous contactera très bientôt.</p>
                     <button
-                      onClick={() => setSent(false)}
+                      onClick={() => setStatus('idle')}
                       className="px-6 py-3 bg-green-700 text-white font-bold rounded-md text-sm hover:bg-green-800 transition-colors"
                     >
                       Envoyer un autre message
                     </button>
                   </motion.div>
                 ) : (
-                  <form onSubmit={handleSubmit} className="space-y-5">
+                  <form ref={formRef} onSubmit={handleSubmit} className="space-y-5">
                     <div className="grid sm:grid-cols-2 gap-5">
                       <div>
                         <label className="block text-green-800 text-sm font-semibold mb-2">Votre nom *</label>
@@ -187,14 +197,36 @@ export default function Contact() {
                         className="w-full px-4 py-3 bg-white border border-green-200 rounded-md text-green-800 placeholder-green-400/60 text-sm focus:outline-none focus:ring-2 focus:ring-green-500 focus:border-transparent transition resize-none"
                       />
                     </div>
+
+                    {status === 'error' && (
+                      <motion.div
+                        initial={{ opacity: 0, y: -8 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        className="flex items-center gap-3 bg-red-50 border border-red-200 text-red-700 rounded-md px-4 py-3 text-sm"
+                      >
+                        <FaExclamationCircle className="flex-shrink-0" size={16} />
+                        Une erreur est survenue. Veuillez réessayer ou nous contacter directement par WhatsApp.
+                      </motion.div>
+                    )}
+
                     <motion.button
-                      whileHover={{ scale: 1.02 }}
-                      whileTap={{ scale: 0.98 }}
+                      whileHover={{ scale: status === 'sending' ? 1 : 1.02 }}
+                      whileTap={{ scale: status === 'sending' ? 1 : 0.98 }}
                       type="submit"
-                      className="w-full flex items-center justify-center gap-2 py-4 bg-green-700 hover:bg-green-800 text-white font-bold rounded-md transition-all duration-200 shadow-lg shadow-green-700/20"
+                      disabled={status === 'sending'}
+                      className="w-full flex items-center justify-center gap-2 py-4 bg-green-700 hover:bg-green-800 disabled:bg-green-400 disabled:cursor-not-allowed text-white font-bold rounded-md transition-all duration-200 shadow-lg shadow-green-700/20"
                     >
-                      <FaPaperPlane size={18} />
-                      Envoyer le message
+                      {status === 'sending' ? (
+                        <>
+                          <FaSpinner size={18} className="animate-spin" />
+                          Envoi en cours...
+                        </>
+                      ) : (
+                        <>
+                          <FaPaperPlane size={18} />
+                          Envoyer le message
+                        </>
+                      )}
                     </motion.button>
                   </form>
                 )}

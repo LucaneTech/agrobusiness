@@ -32,7 +32,7 @@ export default function Home() {
   return (
     <div>
       {/* Hero Section */}
-      <section className="relative min-h-screen flex items-center justify-center overflow-hidden mt-8 sm:mt-12 md:mt-24">
+      <section className="relative min-h-screen flex items-center justify-center overflow-hidden mt-16 sm:mt-20 md:mt-24">
         {/* Background */}
         <div className="absolute inset-0">
           <img
@@ -57,14 +57,14 @@ export default function Home() {
             </motion.div> */}
 
            
-              <motion.h1 variants={fadeUp} className="text-5xl md:text-6xl lg:text-7xl font-800 text-white leading-tight">
+              <motion.h1 variants={fadeUp} className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-800 text-white leading-tight">
                 KFK{' '}
                 <span className="text-orange-400">AGRO</span>
                 <br />BUSINESS
               </motion.h1>
        
 
-            <motion.p variants={fadeUp} className="text-xl md:text-2xl text-green-200 font-500 italic">
+            <motion.p variants={fadeUp} className="text-base sm:text-xl md:text-2xl text-green-200 font-500 italic">
               Ensemble, cultivons l'avenir
             </motion.p>
 
@@ -74,7 +74,7 @@ export default function Home() {
               à la sécurité alimentaire et au développement économique local.
             </motion.p>
 
-            <motion.div variants={fadeUp} className="grid grid-cols-2 gap-3 max-w-lg mx-auto">
+            <motion.div variants={fadeUp} className="grid grid-cols-2 gap-2 sm:gap-3 max-w-lg mx-auto w-full px-2 sm:px-0">
               {highlights.map(({ label, icon: Icon }) => (
                 <div
                   key={label}
@@ -159,7 +159,7 @@ export default function Home() {
 
           {/* Value */}
           <div className="flex items-end justify-center gap-0.5 leading-none mb-1">
-            <span className="text-3xl md:text-4xl font-800 text-green-800 tracking-tight">
+            <span className="text-2xl sm:text-3xl md:text-4xl font-800 text-green-800 tracking-tight">
               {stat.value}
             </span>
             {stat.unit && (
@@ -201,7 +201,7 @@ export default function Home() {
               transition={{ duration: 0.7 }}
             >
               <span className="text-orange-600 font-700 text-sm uppercase tracking-wider">Qui sommes-nous ?</span>
-              <h2 className="text-3xl md:text-4xl font-800 text-green-800 mt-2 mb-5">
+              <h2 className="text-2xl sm:text-3xl md:text-4xl font-800 text-green-800 mt-2 mb-5">
                 Un projet agricole<br />au cœur de la RDC
               </h2>
               <p className="text-gray-600 leading-relaxed mb-5 font-400">
@@ -267,7 +267,7 @@ export default function Home() {
             viewport={{ once: true }}
             className="text-center mb-14"
           >
-            <h2 className="text-3xl md:text-4xl font-800 text-green-800 mb-3">Nos Engagements</h2>
+            <h2 className="text-2xl sm:text-3xl md:text-4xl font-800 text-green-800 mb-3">Nos Engagements</h2>
             <p className="text-gray-600 font-400 max-w-xl mx-auto">Découvrez les piliers de notre projet agricole intégré en RDC</p>
           </motion.div>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
@@ -327,7 +327,7 @@ export default function Home() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
           >
-            <h2 className="text-3xl md:text-4xl font-800 text-white mb-4">
+            <h2 className="text-2xl sm:text-3xl md:text-4xl font-800 text-white mb-4">
               Rejoignez l'aventure KFK
             </h2>
             <p className="text-green-200 font-400 mb-8 max-w-xl mx-auto">

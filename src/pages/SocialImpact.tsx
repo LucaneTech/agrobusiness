@@ -82,7 +82,7 @@ export default function SocialImpact() {
                 <span className="w-6 h-px bg-orange-400" />
                 Notre Mission Sociale
               </span>
-              <h2 className="text-4xl font-800 text-green-900 mb-6 leading-tight">
+              <h2 className="text-2xl sm:text-3xl md:text-4xl font-800 text-green-900 mb-6 leading-tight">
                 Un projet au service des{' '}
                 <span className="text-orange-500">communautés</span>
               </h2>
@@ -97,7 +97,7 @@ export default function SocialImpact() {
               </p>
 
               {/* Counters */}
-              <div className="grid grid-cols-3 gap-3">
+              <div className="grid grid-cols-3 gap-2 sm:gap-3">
                 {counters.map((item, i) => (
                   <motion.div
                     key={i}
@@ -173,7 +173,7 @@ export default function SocialImpact() {
               Axes d'impact
               <span className="w-6 h-px bg-orange-400" />
             </span>
-            <h2 className="text-4xl font-800 text-green-900 mb-3">
+            <h2 className="text-2xl sm:text-3xl md:text-4xl font-800 text-green-900 mb-3">
               Nos axes d'impact
             </h2>
             <p className="text-gray-500 max-w-xl mx-auto font-400">
@@ -273,8 +273,8 @@ export default function SocialImpact() {
               <Quote size={24} className="text-orange-400" />
             </div>
 
-            <blockquote className="text-2xl md:text-3xl font-700 text-white
-              leading-relaxed mb-8 max-w-3xl mx-auto">
+            <blockquote className="text-xl sm:text-2xl md:text-3xl font-700 text-white
+              leading-relaxed mb-8 max-w-3xl mx-auto px-2 sm:px-0">
               Le développement commence par la terre. En cultivant la terre,
               nous cultivons l'avenir de nos communautés.
             </blockquote>

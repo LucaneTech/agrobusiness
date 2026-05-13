@@ -34,24 +34,27 @@ export default function Navbar() {
       animate={{ y: 0, opacity: 1 }}
       transition={{ duration: 0.5, ease: 'easeOut' }}
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-        scrolled ? 'bg-white shadow-lg ' : 'bg-white/95 backdrop-blur-sm '
+        scrolled ? 'bg-white shadow-lg' : 'bg-white/95 backdrop-blur-sm'
       }`}
     >
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex items-center justify-between">
+      <div className="w-full mx-auto px-4 sm:px-6 md:px-8 lg:px-12">
+        <div className="flex items-center justify-between gap-2 sm:gap-4 py-2">
           {/* Logo */}
-          <Link to="/" className="flex items-center gap-3 group">
-           <img src="logo.png" alt="logo KFK agrobusiness" className='w-48 h-auto object-contain'  />
-           
+          <Link to="/" className="flex items-center gap-3 group flex-shrink-0">
+            <img
+              src="logo.png"
+              alt="logo KFK agrobusiness"
+              className="w-28 sm:w-36 md:w-40 lg:w-44 xl:w-48 h-auto object-contain"
+            />
           </Link>
 
-          {/* Desktop Nav */}
-          <nav className="hidden lg:flex items-center gap-1">
+          {/* Desktop Nav - responsive breakpoints */}
+          <nav className="hidden xl:flex items-center gap-0.5 lg:gap-1">
             {navLinks.map((link) => (
               <Link
                 key={link.path}
                 to={link.path}
-                className={`px-3 py-2 rounded-lg text-sm font-600 transition-all duration-200 ${
+                className={`px-2 lg:px-3 py-2 rounded-lg text-xs lg:text-sm font-600 transition-all duration-200 whitespace-nowrap ${
                   location.pathname === link.path
                     ? 'bg-green-800 text-white'
                     : 'text-gray-700 hover:bg-green-50 hover:text-green-800'
@@ -63,28 +66,29 @@ export default function Navbar() {
           </nav>
 
           {/* CTA + Mobile Toggle */}
-          <div className="flex items-center gap-3">
+          <div className="flex items-center gap-2 sm:gap-3 flex-shrink-0">
             <a
               href="https://wa.me/243970000000"
               target="_blank"
               rel="noopener noreferrer"
-              className="hidden sm:flex items-center gap-2 bg-green-800 hover:bg-green-700 text-white text-sm font-700 px-4 py-2.5 rounded-lg transition-all duration-200 shadow-md hover:shadow-lg hover:-translate-y-0.5"
+              className="hidden sm:flex items-center gap-2 bg-green-800 hover:bg-green-700 text-white text-xs md:text-sm font-700 px-3 md:px-4 py-2 md:py-2.5 rounded-lg transition-all duration-200 shadow-md hover:shadow-lg hover:-translate-y-0.5 whitespace-nowrap"
             >
-              <FaPhoneAlt size={15} />
-              Nous Contacter
+              <FaPhoneAlt size={13} className="md:w-[15px] md:h-[15px]" />
+              <span className="hidden md:inline">Nous Contacter</span>
+              <span className="md:hidden">Contact</span>
             </a>
             <button
               onClick={() => setIsOpen(!isOpen)}
-              className="lg:hidden p-2 rounded-lg text-green-800 hover:bg-green-50 transition-colors"
+              className="xl:hidden p-1.5 sm:p-2 rounded-lg text-green-800 hover:bg-green-50 transition-colors"
               aria-label="Toggle menu"
             >
-              {isOpen ? <FaTimes size={24} /> : <FaBars size={24} />}
+              {isOpen ? <FaTimes size={20} className="sm:w-6 sm:h-6" /> : <FaBars size={20} className="sm:w-6 sm:h-6" />}
             </button>
           </div>
         </div>
       </div>
 
-      {/* Mobile Menu */}
+      {/* Mobile Menu - responsive height and padding */}
       <AnimatePresence>
         {isOpen && (
           <motion.div
@@ -92,14 +96,14 @@ export default function Navbar() {
             animate={{ opacity: 1, height: 'auto' }}
             exit={{ opacity: 0, height: 0 }}
             transition={{ duration: 0.3 }}
-            className="lg:hidden border-t border-gray-100 bg-white overflow-hidden"
+            className="xl:hidden border-t border-gray-100 bg-white overflow-hidden max-h-[calc(100vh-64px)] overflow-y-auto"
           >
-            <div className="px-4 py-4 space-y-1">
+            <div className="px-3 sm:px-4 py-3 sm:py-4 space-y-1">
               {navLinks.map((link) => (
                 <Link
                   key={link.path}
                   to={link.path}
-                  className={`block px-4 py-3 rounded-lg font-600 transition-all duration-200 ${
+                  className={`block px-3 sm:px-4 py-2.5 sm:py-3 rounded-lg text-sm sm:text-base font-600 transition-all duration-200 ${
                     location.pathname === link.path
                       ? 'bg-green-800 text-white'
                       : 'text-gray-700 hover:bg-green-50 hover:text-green-800'
@@ -112,9 +116,9 @@ export default function Navbar() {
                 href="https://wa.me/243970000000"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="flex items-center gap-2 bg-green-800 text-white px-4 py-3 rounded-lg font-700 mt-2"
+                className="flex items-center gap-2 bg-green-800 text-white px-3 sm:px-4 py-2.5 sm:py-3 rounded-lg font-700 mt-3 sm:mt-4 text-sm sm:text-base"
               >
-                <FaPhoneAlt size={16} />
+                <FaPhoneAlt size={14} className="sm:w-4 sm:h-4" />
                 Nous Contacter
               </a>
             </div>

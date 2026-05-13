@@ -47,7 +47,7 @@ export default function Project() {
             viewport={{ once: true }}
             className="text-center mb-16"
           >
-            <h2 className="text-4xl font-bold text-green-900 mb-4">Notre Vision</h2>
+            <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-green-900 mb-4">Notre Vision</h2>
             <p className="text-green-700/70 max-w-2xl mx-auto text-base leading-relaxed">
               KFK Agro Business est un projet agricole intégré qui combine la culture du maïs et
               l'élevage de poules pondeuses pour créer un modèle agricole durable en RDC.
@@ -225,7 +225,7 @@ export default function Project() {
             viewport={{ once: true }}
             className="text-center mb-12"
           >
-            <h2 className="text-4xl font-bold text-green-900 mb-4">Objectifs de Développement</h2>
+            <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-green-900 mb-4">Objectifs de Développement</h2>
             <p className="text-green-700/70">Notre feuille de route pour les 6 prochaines années</p>
           </motion.div>
           <motion.div
@@ -243,7 +243,7 @@ export default function Project() {
               ].map((col) => (
                 <div
                   key={col.label}
-                  className={`px-6 py-4 ${col.align} flex items-center
+                  className={`px-2 sm:px-4 md:px-6 py-3 sm:py-4 ${col.align} flex items-center
           ${col.align === 'text-center' ? 'justify-center' : ''} gap-2`}
                 >
                   {col.icon && (
@@ -252,7 +252,7 @@ export default function Project() {
                       {col.icon}
                     </span>
                   )}
-                  <span className="text-white text-xs font-700 uppercase tracking-widest">
+                  <span className="text-white text-[10px] sm:text-xs font-700 uppercase tracking-wider sm:tracking-widest">
                     {col.label}
                   </span>
                 </div>
@@ -273,18 +273,17 @@ export default function Project() {
         ${i % 2 === 0 ? 'bg-white' : 'bg-gray-50/50'}`}
               >
                 {/* Horizon */}
-                <div className="px-6 py-5 flex items-center gap-3">
-                  {/* Step indicator */}
-                  <div className={`w-1.5 h-8 rounded-md flex-shrink-0 ${i === 0 ? 'bg-green-300' :
+                <div className="px-2 sm:px-4 md:px-6 py-3 sm:py-5 flex items-center gap-2">
+                  <div className={`w-1 sm:w-1.5 h-6 sm:h-8 rounded-md flex-shrink-0 ${i === 0 ? 'bg-green-300' :
                       i === 1 ? 'bg-green-500' :
                         'bg-green-700'
                     }`} />
-                  <div>
-                    <p className="text-green-900 text-sm font-700 leading-tight">
+                  <div className="min-w-0">
+                    <p className="text-green-900 text-xs sm:text-sm font-700 leading-tight truncate">
                       {row.horizon.split('(')[0].trim()}
                     </p>
                     {row.horizon.includes('(') && (
-                      <p className="text-gray-400 text-[11px] font-500 mt-0.5">
+                      <p className="text-gray-400 text-[9px] sm:text-[11px] font-500 mt-0.5">
                         {row.horizon.match(/\(.*\)/)?.[0]}
                       </p>
                     )}
@@ -292,26 +291,24 @@ export default function Project() {
                 </div>
 
                 {/* Maïs */}
-                <div className="px-6 py-5 flex items-center justify-center">
-                  <span className="inline-flex items-center gap-1.5
-         
-          text-green-700 font-700 text-xs
-          px-3 py-1.5 
+                <div className="px-1 sm:px-4 md:px-6 py-3 sm:py-5 flex items-center justify-center">
+                  <span className="inline-flex items-center gap-1
+          text-green-700 font-700 text-[10px] sm:text-xs
+          px-1.5 sm:px-3 py-1 sm:py-1.5
           group-hover:bg-green-100 transition-colors duration-200">
-                    <span className="w-1.5 h-1.5 bg-green-500 rounded-md" />
-                    {row.mais}
+                    <span className="w-1.5 h-1.5 bg-green-500 rounded-md flex-shrink-0" />
+                    <span className="truncate">{row.mais}</span>
                   </span>
                 </div>
 
                 {/* Élevage */}
-                <div className="px-6 py-5 flex items-center justify-center">
-                  <span className="inline-flex items-center gap-1.5
-        
-          text-orange-600 font-700 text-xs
-          px-3 py-1.5
+                <div className="px-1 sm:px-4 md:px-6 py-3 sm:py-5 flex items-center justify-center">
+                  <span className="inline-flex items-center gap-1
+          text-orange-600 font-700 text-[10px] sm:text-xs
+          px-1.5 sm:px-3 py-1 sm:py-1.5
           group-hover:bg-orange-100 transition-colors duration-200">
-                    <span className="w-1.5 h-1.5 bg-orange-400 rounded-md" />
-                    {row.elevage}
+                    <span className="w-1.5 h-1.5 bg-orange-400 rounded-md flex-shrink-0" />
+                    <span className="truncate">{row.elevage}</span>
                   </span>
                 </div>
               </motion.div>
@@ -338,7 +335,7 @@ export default function Project() {
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
             >
-              <h2 className="text-4xl font-bold text-green-900 mb-6">Zone d'Action</h2>
+              <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-green-900 mb-6">Zone d'Action</h2>
               <p className="text-green-700/70 leading-relaxed mb-4">
                 Le projet KFK Agro Business est principalement implanté dans la <strong className="text-green-800">région de Luebo</strong>,
                 dans la province du Kasaï en République Démocratique du Congo.
