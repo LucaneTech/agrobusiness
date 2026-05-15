@@ -106,7 +106,7 @@ export default function Footer() {
       <div className="border-t border-green-800">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 flex flex-col sm:flex-row items-center justify-between gap-1 sm:gap-2">
           <p className="text-green-300 text-[11px] sm:text-xs text-center">
-            © 2024 KFK Agro Business. Tous droits réservés.
+            © 2025 KFK Agro Business. Tous droits réservés.
           </p>
           <p className="text-green-300 text-[11px] sm:text-xs text-center sm:text-right">
             KFK Agro Business — Ensemble, cultivons l'avenir
